@@ -97,11 +97,27 @@ Detailed project specifications, architectural decisions, and technical guides c
 
 
 
-## 👨‍💻 Backend Development Team
+<h2 align="center">👨‍💻 Backend Development Team</h2>
 
-| Developer | GitHub profile |
-| --- | --- |
-| Daniel Muntyanu | <a href="https://github.com/danielmuntyanu"><img src="docs/assets/github-logo-readme.png" alt="GitHub profile" width="20" height="20"></a> [@danielmuntyanu](https://github.com/danielmuntyanu) |
-| Alexa Pop | <a href="https://github.com/Alexapop"><img src="docs/assets/github-logo-readme.png" alt="GitHub profile" width="20" height="20"></a> [@Alexapop](https://github.com/Alexapop) |
-| Jose Cgh | <a href="https://github.com/Josecgh"><img src="docs/assets/github-logo-readme.png" alt="GitHub profile" width="20" height="20"></a> [@Josecgh](https://github.com/Josecgh) |
-| Rana Afkari | <a href="https://github.com/Raana-1375"><img src="docs/assets/github-logo-readme.png" alt="GitHub profile" width="20" height="20"></a> [@Raana-1375](https://github.com/Raana-1375) |
+<table align="center">
+  <tr>
+    <th>Developer</th>
+    <th>GitHub profile</th>
+  </tr>
+  <tr>
+    <td>Daniel Muntyanu</td>
+    <td><a href="https://github.com/danielmuntyanu"><img src="docs/assets/github-logo-readme.png" alt="GitHub profile" width="20" height="20"></a> <a href="https://github.com/danielmuntyanu">@danielmuntyanu</a></td>
+  </tr>
+  <tr>
+    <td>Alexa Pop</td>
+    <td><a href="https://github.com/Alexapop"><img src="docs/assets/github-logo-readme.png" alt="GitHub profile" width="20" height="20"></a> <a href="https://github.com/Alexapop">@Alexapop</a></td>
+  </tr>
+  <tr>
+    <td>Jose Cgh</td>
+    <td><a href="https://github.com/Josecgh"><img src="docs/assets/github-logo-readme.png" alt="GitHub profile" width="20" height="20"></a> <a href="https://github.com/Josecgh">@Josecgh</a></td>
+  </tr>
+  <tr>
+    <td>Rana Afkari</td>
+    <td><a href="https://github.com/Raana-1375"><img src="docs/assets/github-logo-readme.png" alt="GitHub profile" width="20" height="20"></a> <a href="https://github.com/Raana-1375">@Raana-1375</a></td>
+  </tr>
+</table>
