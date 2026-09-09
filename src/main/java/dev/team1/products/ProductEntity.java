@@ -44,7 +44,7 @@ public class ProductEntity {
     private BigDecimal price;
 
     @Column(name = "discount", nullable = true)
-    private int discount; // para porcentaje !!!
+    private BigDecimal discount; // para porcentaje !!!
 
     @Column(name = "available")
     private boolean available = true;

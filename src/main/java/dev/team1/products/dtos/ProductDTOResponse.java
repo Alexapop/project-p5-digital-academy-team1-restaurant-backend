@@ -13,7 +13,7 @@ public record ProductDTOResponse(
     String description,
     String imageUrl,
     BigDecimal price,
-    int discount,
+    BigDecimal discount,
     boolean available,
     boolean exclusive
 ) {

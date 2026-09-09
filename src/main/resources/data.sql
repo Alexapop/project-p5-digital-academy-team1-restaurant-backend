@@ -3,7 +3,7 @@ INSERT INTO products (
     image_url, price, discount, 
     available, exclusive 
 ) VALUES (
-    "", 0, "",
-    "", 0.00, 0,
+    "Hello Edamame", 0, "Edamame World!",
+    "hello-edamame.png", 5.0, 0.0,
     TRUE, FALSE
 ) 
