@@ -2,7 +2,6 @@ package dev.team1.products;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -11,6 +10,7 @@ import dev.team1.contracts.IProductsService;
 import dev.team1.enums.ProductCategory;
 import dev.team1.mappers.ProductMapper;
 import dev.team1.products.dtos.ProductDTOResponse;
+import dev.team1.products.exceptions.ProductsExceptionNotFound;
 
 @Service 
 public class ProductsService implements IProductsService {
@@ -30,7 +30,6 @@ public class ProductsService implements IProductsService {
             ProductDTOResponse dto = ProductMapper.toDTO(p);
             products.add(dto);
         });
-
         return products;
     }
 
@@ -38,7 +37,7 @@ public class ProductsService implements IProductsService {
     @Transactional(readOnly = true)
     public ProductDTOResponse getById(Long id) {
         ProductEntity product = productsRepository.findById(id)
-            .orElseThrow(() -> ProductExceptionNotFound("Cannot find product with id " + id + " because it doesn't exist."));
+            .orElseThrow(() -> new ProductsExceptionNotFound("Cannot find product with id " + id + " because it doesn't exist."));
         
         return ProductMapper.toDTO(product);
     }
@@ -52,7 +51,6 @@ public class ProductsService implements IProductsService {
             ProductDTOResponse dto = ProductMapper.toDTO(p);
             products.add(dto);
         });
-
         return products;
     }
 
