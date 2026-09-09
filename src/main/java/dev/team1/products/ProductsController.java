@@ -26,16 +26,17 @@ public class ProductsController {
     }
 
     @GetMapping("")
-    public ResponseEntity<List<ProductDTOResponse>> index() {
+    public ResponseEntity<List<ProductDTOResponse>> index(
+        @RequestParam(required = false) ProductCategory category
+    ) {
+        if (category != null) {
+            return ResponseEntity.ok(
+                productsService.getByCategory(category)
+            );
+        }
+        
         return ResponseEntity.ok(
             productsService.getAll()
-        );
-    }
-
-    @GetMapping("")
-    public ResponseEntity<List<ProductDTOResponse>> getByCategory(@RequestParam ProductCategory category) {
-        return ResponseEntity.ok(
-            productsService.getByCategory(category)
         );
     }
 
