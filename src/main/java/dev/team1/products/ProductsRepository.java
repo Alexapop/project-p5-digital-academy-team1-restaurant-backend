@@ -9,7 +9,7 @@ import dev.team1.enums.ProductCategory;
 
 public interface ProductsRepository extends JpaRepository<ProductEntity, Long>{
 
-    @Query("select p from products p where p.category = ?1 and p.available = true")
+    @Query("select p from products p where p.category = ?1 and p.available = TRUE")
     public List<ProductEntity> findByCategory(ProductCategory category);
 
 }
