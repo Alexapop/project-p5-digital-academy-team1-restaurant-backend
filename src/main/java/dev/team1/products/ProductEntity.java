@@ -5,6 +5,8 @@ import java.math.BigDecimal;
 import dev.team1.enums.ProductCategory;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -31,6 +33,7 @@ public class ProductEntity {
     private String name;
 
     @Column(name = "category")
+    @Enumerated(EnumType.STRING)
     private ProductCategory category;
 
     @Column(name = "description", nullable = true, length = 255)

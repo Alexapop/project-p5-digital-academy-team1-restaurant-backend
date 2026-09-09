@@ -10,25 +10,25 @@ import jakarta.validation.constraints.NotBlank;
 import lombok.NonNull;
 
 public record ProductDTORequest(
-    @NotBlank 
+    @NotBlank(message = "EL campo 'name' no debe estar vasio")
     String name,
 
-    @NonNull 
+    @NonNull
     ProductCategory category,
     
-    @NotBlank 
+    @NotBlank(message = "EL campo 'description' no debe estar vasio")
     String description,
     
-    @NotBlank 
+    @NotBlank(message = "EL campo 'imageUrl' no debe estar vasio")
     String imageUrl,
     
     @NonNull 
     @DecimalMin(value = "0.0", inclusive = false)
-    @Digits(integer = 10, fraction = 2)
+    @Digits(integer = 10, fraction = 2, message = "El campo 'price' debe estar en formato 0.00 con 10 dígitos máximo en un número y dos dígitos después de punto decimal")
     BigDecimal price,
     
     @Min(value = 0)
-    @Digits(integer = 3, fraction = 0)
+    @Digits(integer = 3, fraction = 0, message = "El campo 'discount' debe estar en formato de pocentaje")
     int discount,
     
     boolean available,
