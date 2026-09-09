@@ -14,14 +14,12 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @Entity 
 @Table(name = "products")
 @NoArgsConstructor 
 @AllArgsConstructor 
 @Getter
-@Setter
 public class ProductEntity {
 
     @Id 
@@ -56,5 +54,14 @@ public class ProductEntity {
 
     // @OneToMany(mappedBy = "product")
     // private List<OrderProduct> orderProducts = new ArrayList<>();
+
+
+    public void setAvailable(boolean available) {
+        this.available = available;
+    }
+
+    public void setExclusive(boolean exclusive) {
+        this.exclusive = exclusive;
+    }
 
 }
