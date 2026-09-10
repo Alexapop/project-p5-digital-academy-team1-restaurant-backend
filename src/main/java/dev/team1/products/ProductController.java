@@ -3,7 +3,7 @@ package dev.team1.products;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import dev.team1.contracts.IProductsService;
+import dev.team1.contracts.IProductService;
 import dev.team1.enums.ProductCategory;
 import dev.team1.products.dtos.ProductDTOResponse;
 
@@ -17,11 +17,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController 
 @RequestMapping(path = "${api-endpoint}/products")
-public class ProductsController {
+public class ProductController {
 
-    private final IProductsService productsService;
+    private final IProductService productsService;
 
-    public ProductsController(IProductsService productsService) {
+    public ProductController(IProductService productsService) {
         this.productsService = productsService;
     }
 

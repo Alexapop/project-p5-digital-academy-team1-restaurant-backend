@@ -5,18 +5,18 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import dev.team1.contracts.IProductsService;
+import dev.team1.contracts.IProductService;
 import dev.team1.enums.ProductCategory;
 import dev.team1.mappers.ProductMapper;
 import dev.team1.products.dtos.ProductDTOResponse;
-import dev.team1.products.exceptions.ProductsExceptionNotFound;
+import dev.team1.products.exceptions.ProductExceptionNotFound;
 
 @Service 
-public class ProductsService implements IProductsService {
+public class ProductsService implements IProductService {
 
-    private final ProductsRepository productsRepository;
+    private final ProductRepository productsRepository;
 
-    public ProductsService(ProductsRepository productsRepository) {
+    public ProductsService(ProductRepository productsRepository) {
         this.productsRepository = productsRepository;
     }
 
@@ -40,7 +40,7 @@ public class ProductsService implements IProductsService {
     @Transactional(readOnly = true)
     public ProductDTOResponse getById(Long id) {
         ProductEntity product = productsRepository.findById(id)
-            .orElseThrow(() -> new ProductsExceptionNotFound("Cannot find product with id " + id + " because it doesn't exist."));
+            .orElseThrow(() -> new ProductExceptionNotFound("Cannot find product with id " + id + " because it doesn't exist."));
         
         return ProductMapper.toDTO(product);
     }

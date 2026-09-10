@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 
 import dev.team1.enums.ProductCategory;
 
-public interface ProductsRepository extends JpaRepository<ProductEntity, Long>{
+public interface ProductRepository extends JpaRepository<ProductEntity, Long>{
 
     public Page<ProductEntity> findByAvailableIsTrue(Pageable pageable);
 
