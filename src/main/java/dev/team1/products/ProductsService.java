@@ -17,7 +17,7 @@ import dev.team1.products.exceptions.ProductsExceptionNotFound;
 @Service 
 public class ProductsService implements IProductsService {
 
-    private ProductsRepository productsRepository;
+    private final ProductsRepository productsRepository;
 
     public ProductsService(ProductsRepository productsRepository) {
         this.productsRepository = productsRepository;

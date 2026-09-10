@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping(path = "${api-endpoint}/products")
 public class ProductsController {
 
-    private IProductsService productsService;
+    private final IProductsService productsService;
 
     public ProductsController(IProductsService productsService) {
         this.productsService = productsService;
