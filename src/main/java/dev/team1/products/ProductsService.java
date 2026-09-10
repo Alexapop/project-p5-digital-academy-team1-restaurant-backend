@@ -3,6 +3,8 @@ package dev.team1.products;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,14 +25,18 @@ public class ProductsService implements IProductsService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<ProductDTOResponse> getAll() {
-        List<ProductDTOResponse> products = new ArrayList<>();
+    public Page<ProductDTOResponse> getAll(Pageable pageable) {
+        Page<ProductEntity> pageEntity = productsRepository.findAll(pageable);
         
-        productsRepository.findAll().forEach(p -> {
-            ProductDTOResponse dto = ProductMapper.toDTO(p);
-            products.add(dto);
-        });
-        return products;
+        return pageEntity.map(ProductMapper::toDTO);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Page<ProductDTOResponse> getAllAvailable(Pageable pageable) {
+        Page<ProductEntity> pageEntity = productsRepository.findByAvailableIsTrue(pageable);
+        
+        return pageEntity.map(ProductMapper::toDTO);
     }
 
     @Override
@@ -44,14 +50,10 @@ public class ProductsService implements IProductsService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<ProductDTOResponse> getByCategory(ProductCategory category) {
-        List<ProductDTOResponse> products = new ArrayList<>();
+    public Page<ProductDTOResponse> getByCategory(ProductCategory category, Pageable pageable) {
+        Page<ProductEntity> pageEntity = productsRepository.findByCategory(category, pageable);
         
-        productsRepository.findByCategory(category).forEach(p -> {
-            ProductDTOResponse dto = ProductMapper.toDTO(p);
-            products.add(dto);
-        });
-        return products;
+        return pageEntity.map(ProductMapper::toDTO);
     }
 
 }

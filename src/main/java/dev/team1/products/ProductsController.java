@@ -7,8 +7,6 @@ import dev.team1.contracts.IProductsService;
 import dev.team1.enums.ProductCategory;
 import dev.team1.products.dtos.ProductDTOResponse;
 
-import java.util.List;
-
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
@@ -46,7 +44,7 @@ public class ProductsController {
     @GetMapping("administration")
     public ResponseEntity<Page<ProductDTOResponse>> administration(Pageable pageable) {
         return ResponseEntity.ok(
-            productsService.getAll(pageable);
+            productsService.getAll(pageable)
         );
     }
     
