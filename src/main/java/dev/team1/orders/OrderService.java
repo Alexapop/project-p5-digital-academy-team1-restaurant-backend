@@ -2,6 +2,8 @@ package dev.team1.orders;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -10,6 +12,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import dev.team1.orders.dtos.OrderDTORequest;
 import dev.team1.orders.dtos.OrderDTOResponse;
+import dev.team1.orders_products.OrderProductEntity;
 import dev.team1.products.ProductEntity;
 import dev.team1.products.ProductRepository;
 
@@ -30,6 +33,9 @@ public class OrderService {
 
     @Transactional
     public OrderDTOResponse createOrder(OrderDTORequest request) {
+        OrderEntity order = new OrderEntity();
+        List<OrderProductEntity> ops = new ArrayList<>();
+
         BigDecimal subtotal = BigDecimal.ZERO;
         BigDecimal discountAmount = BigDecimal.ZERO;
 
@@ -38,6 +44,13 @@ public class OrderService {
             ProductEntity product = getAvailableProduct(item.productId());
             BigDecimal quantity = BigDecimal.valueOf(item.quantity());
 
+            OrderProductEntity op = OrderProductEntity.builder()
+                .order(order)
+                .product(product)
+                .quantity(quantity)
+                .build();
+            ops.add(op);
+            
             BigDecimal productSubtotal = product.getPrice().multiply(quantity)
                     .setScale(2, RoundingMode.HALF_UP);
             BigDecimal productDiscount = calculateDiscount(product, productSubtotal);
@@ -55,7 +68,7 @@ public class OrderService {
         BigDecimal total = subtotalAfterDiscount.add(vatAmount);
 
         // 3. Save the order and return its data.
-        OrderEntity order = new OrderEntity();
+        
         order.setSubtotal(subtotal);
         // Product discounts can differ, so there is no single order discount rate.
         order.setDiscountRate(null);
@@ -64,6 +77,7 @@ public class OrderService {
         order.setVatAmount(vatAmount);
         order.setTotal(total);
         order.setChefNote(request.chefNote());
+        order.setOrderProducts(ops);
 
         // Order lines must be persisted once the OrderProduct mapping exists.
         OrderEntity savedOrder = orderRepository.save(order);
