@@ -1,6 +1,8 @@
 package dev.team1.orders_products;
 
 
+import java.math.BigDecimal;
+
 import dev.team1.orders.OrderEntity;
 import dev.team1.products.ProductEntity;
 import jakarta.persistence.Column;
@@ -34,10 +36,10 @@ public class OrderProductEntity {
     private ProductEntity product;
 
     @Column(name = "quantity", nullable = false)
-    private int quantity;
+    private BigDecimal quantity;
 
     @Builder 
-    public OrderProductEntity(OrderEntity order, ProductEntity product, int quantity) {
+    public OrderProductEntity(OrderEntity order, ProductEntity product, BigDecimal quantity) {
         this.order = order;
         this.product = product;
         this.quantity = quantity;
