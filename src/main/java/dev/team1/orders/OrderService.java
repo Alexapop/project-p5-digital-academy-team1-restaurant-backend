@@ -11,7 +11,7 @@ import org.springframework.web.server.ResponseStatusException;
 import dev.team1.orders.dtos.OrderDTORequest;
 import dev.team1.orders.dtos.OrderDTOResponse;
 import dev.team1.products.ProductEntity;
-import dev.team1.products.ProductsRepository;
+import dev.team1.products.ProductRepository;
 
 @Service
 public class OrderService {
@@ -20,10 +20,10 @@ public class OrderService {
     private static final int VAT_RATE = 10;
 
     private final OrderRepository orderRepository;
-    private final ProductsRepository productsRepository;
+    private final ProductRepository productsRepository;
 
     public OrderService(OrderRepository orderRepository,
-            ProductsRepository productsRepository) {
+            ProductRepository productsRepository) {
         this.orderRepository = orderRepository;
         this.productsRepository = productsRepository;
     }
