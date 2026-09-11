@@ -1,7 +1,11 @@
 package dev.team1.orders;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
+import dev.team1.orders_products.OrderProductEntity;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Table;
 import lombok.AccessLevel;
@@ -11,6 +15,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 @Entity
 @Table(name = "orders")
@@ -42,5 +47,8 @@ public class OrderEntity {
     private BigDecimal total;
 
     private String chefNote;
+
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<OrderProductEntity> orderProducts = new ArrayList<>();
 
 }
