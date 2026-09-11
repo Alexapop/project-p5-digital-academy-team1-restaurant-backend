@@ -12,11 +12,11 @@ import dev.team1.products.dtos.ProductDTOResponse;
 import dev.team1.products.exceptions.ProductExceptionNotFound;
 
 @Service 
-public class ProductsService implements IProductService {
+public class ProductService implements IProductService {
 
     private final ProductRepository productsRepository;
 
-    public ProductsService(ProductRepository productsRepository) {
+    public ProductService(ProductRepository productsRepository) {
         this.productsRepository = productsRepository;
     }
 
